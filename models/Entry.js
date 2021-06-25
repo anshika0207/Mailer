@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const validator = require('validator'); 
 
 const entrySchema = new Schema({
-    username: String,
+    email: {
+        type:String, 
+        validate: [validator.isEmail, 'invalid email']
+    },
     password: String
 })
 

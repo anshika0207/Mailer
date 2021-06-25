@@ -48,12 +48,6 @@ app.post("/signup",(req,res)=>{
     var user = req.body.username;
     var pass = req.body.password;
 
-    // var newEntry = new Entry({
-    //     username: user,
-    //     password: pass
-    // })
-    // newEntry.save();
-
     Entry.create(req.body);
     res.send("login");
 
@@ -72,17 +66,20 @@ app.post("/login", (req, res)=>{
     var id = req.body.username;
     var ps = req.body.password;
 
-    Entry.findOne({username: id } , function(err, entries){
-        if(err){
-            console.log(err);
+    Entry.findOne({username: id}).then(user=>{
+        if(!user){
+            console.log('email is not correct...')
+            return res.status(404).json({emailnotfound:"Email not found"});
         }
         else{
-            console.log("logged in successfully!!")
-            res.send("found logged in person...")
+            if(user.password===ps){
+                console.log('logged in...');
+            }
+            else{
+                console.log('password-invalid');
+            }
         }
     })
-
-    // console.log("idhr aa rha h...")
 })
 
 
