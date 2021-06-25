@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
+const Entry = require('./models/Entry')
 
 
 mongoose.connect('mongodb://localhost:27017/userloginDB', {useNewUrlParser: true, useUnifiedTopology: true});
@@ -9,36 +10,33 @@ mongoose.connect('mongodb://localhost:27017/userloginDB', {useNewUrlParser: true
 
 const app = express();
 
+app.use(express.json()); 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-
-const entrySchema = new mongoose.Schema({
-    username: String,
-    password: String
+app.get('/',(req,res)=>{
+    res.render('.')
 })
 
-const Entry = mongoose.model('Entry', entrySchema);
-
-// signup page \\
-
-
+// signup page 
 app.get("/signup", function(req,res){
     res.render("signup");
 });
 
-app.post("/signup", function(req,res){
+app.post("/signup",(req,res)=>{
     var user = req.body.username;
     var pass = req.body.password;
 
-    var newEntry = new Entry({
-        username: user,
-        password: pass
-    })
-    newEntry.save();
-    res.render("/login");
+    // var newEntry = new Entry({
+    //     username: user,
+    //     password: pass
+    // })
+    // newEntry.save();
+
+    Entry.create(req.body);
+    res.send("login");
 
 })
 
@@ -55,21 +53,13 @@ app.post("/login", function(req, res){
     var id = req.body.username;
     var ps = req.body.password;
 
-    Entry.find({}, function(err, entries){
+    Entry.findOne({username: id } , function(err, entries){
         if(err){
             console.log(err);
         }
         else{
-            entries.forEach(entry => {
-                if(entry.username === id && entry.password === ps){
-                    res.render("/", {
-                        user: id
-                    });
-                }
-                else{
-                    res.render("/signup");
-                }
-            });
+            console.log("logged in successfully!!")
+            res.send("found logged in person...")
         }
     })
 })

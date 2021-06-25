@@ -1,0 +1,15 @@
+.app__login{
+    text-align: center;
+    margin: 1rem;
+
+}
+.login__form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-content: center;
+    text-align: center;
+}
+.login__form>input{
+    padding: 0.5rem;
+}
