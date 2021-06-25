@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Benne&display=swap');
+
+.mainarea{
+    display: flex;
+    flex-direction: row;
+    padding: 200px;
+    font-style: 'Benne', serif;
+}
+
+.mainarea img{
+    width: 500px;
+    height: 300px;
+    float: right;
+    padding: 0px 50px ;
+}
+
+.mainarea text{
+    float: left;
+    width: 250px;
+    font-style: 'Benne', serif;
+}
+
+body{
+    background-color: #FFF5DA;
+    font-style: 'Benne', serif;
+}

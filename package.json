@@ -13,8 +13,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+<<<<<<< HEAD
+    "web-vitals": "^1.1.2",
+    "yarn": "^1.22.10"
+=======
     "validator": "^13.6.0",
     "web-vitals": "^1.1.2"
+>>>>>>> ad9fbd85debc1e7be70ba46c2c80d110bd1aacf9
   },
   "scripts": {
     "start": "react-scripts start",
