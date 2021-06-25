@@ -14,9 +14,7 @@ function Login() {
          axios.post('/login', {
             username: username,
             password: password
-        },
-        alert("clicked on login"));
-
+         });
 
         setusername("");
         setpassword("");
@@ -24,7 +22,7 @@ function Login() {
     return (
 
         <div className="app__login">
-            <form action="" className="login__form">
+            <form action="" className="login__form"  onSubmit={loginValidation}>
                 <input type="text" onChange={(e)=> setusername(e.target.value)}
                  placeholder="Enter username"
                  value={username}/>
@@ -33,7 +31,7 @@ function Login() {
                 value={password}
                 placeholder="Enter password"/>
 
-                <button type="submit" onClick={loginValidation}>Login</button>
+                <button type="submit">Login</button>
             </form>
         </div>
     )
