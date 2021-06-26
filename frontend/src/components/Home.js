@@ -1,52 +1,44 @@
-<<<<<<< HEAD
-import React, {useState} from "react";
-import Navbar from "./Navbar";
-import './Home.css';
-import Mail from "./Mail";
-=======
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import './Home.css';
 import axios from "./axios";
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
-
 var userIsRegistered=true;
 
 function Home(){
 
-<<<<<<< HEAD
-    var [company, setcompany] = useState("");
-    var [subject, setsubject] = useState("");
-    var [mailbody, setmailbody] = useState("");
-    var [emails, setemails] = useState("");
-    var [plan, setplan] = useState("");
+// <<<<<<< HEAD
+    // var [company, setcompany] = useState("");
+    // var [subject, setsubject] = useState("");
+    // var [mailbody, setmailbody] = useState("");
+    // var [emails, setemails] = useState("");
+    // var [plan, setplan] = useState("");
 
-    function cmp(event){
-        setcompany(event.target.value);
-        // console.log({company});
-    }
+    // function cmp(event){
+    //     setcompany(event.target.value);
+    //     // console.log({company});
+    // }
 
-    function sub(event){
-        setsubject(event.target.value);
-    }
+    // function sub(event){
+    //     setsubject(event.target.value);
+    // }
 
-    function bady(event){
-        setmailbody(event.target.value);
-    }
+    // function bady(event){
+    //     setmailbody(event.target.value);
+    // }
 
-    function ez(event){
-        setemails(event.target.value);
-    }
+    // function ez(event){
+    //     setemails(event.target.value);
+    // }
 
-    function scription(event){
-        setplan(event.target.name);
-    }
+    // function scription(event){
+    //     setplan(event.target.name);
+    // }
 
-    function submit(){
+    // function submit(){
 
-    }
+    // }
 
-=======
+// =======
   const [Company, setCompany] = useState("");
   const [Emails, setEmails] = useState("");
   const [Reccuring, setReccuring] = useState("")
@@ -87,7 +79,7 @@ function Home(){
     setCompany("");
     setEmails("");
   }
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
+
     return(
     <div class="home">
     <Navbar registeration = {userIsRegistered}/>
@@ -104,11 +96,7 @@ function Home(){
           <div class="row g">
             <div class="col-sm">
               <label for="firstName" class="form-label">Company Name</label>
-<<<<<<< HEAD
               <input type="text" class="form-control" id="firstName" onChange={cmp} required/>
-=======
-              <input type="text" class="form-control" id="firstName" placeholder="enter company name" value={Company} required onChange={(e) =>setCompany(e.target.value)}/>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
               <div class="invalid-feedback">
                 Valid company name is required.
               </div>
@@ -134,11 +122,7 @@ function Home(){
               <label for="username" class="form-label">Users <span class="text-muted">Enter user email address, with each on new line.</span>  </label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-<<<<<<< HEAD
                 <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={ez}></textarea>
-=======
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" value={Emails} placeholder="Enter emails here.." onChange={(e)=>setEmails(e.target.value)}></textarea>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
                 </div>
               </div>
             </div>
@@ -161,11 +145,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient after every 20 or 30 second every day</li>
                     </ul>
-<<<<<<< HEAD
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary"  name="recurring" onClick={scription}>Choose</button>
-=======
-                    <button type="button" value="reccuring" disabled={disable} class="w-100 btn btn-lg btn-outline-primary" onClick={(e)=>{setReccuring(e.target.value); setDisable(true);}} >Choose</button>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
                 </div>
                 </div>
             </div>
@@ -178,11 +158,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular day and time of every week</li>
                     </ul>
-<<<<<<< HEAD
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary"  name="weekly" onClick={scription}>Choose</button>
-=======
-                    <button type="button" value="weekly" disabled={disable} class="w-100 btn btn-lg btn-outline-primary" onClick={(e)=>{setWeekly(e.target.value); setDisable(true);}}>Choose</button>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
                 </div>
                 </div>
             </div>
@@ -195,11 +171,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular date and time of every month</li>
                     </ul>
-<<<<<<< HEAD
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary" name="monthly" onClick={scription}>Choose</button>
-=======
-                    <button type="button" value="monthly" disabled={disable} class="w-100 btn btn-lg btn-outline-primary" onClick={(e)=>{setMonthly(e.target.value); setDisable(true);}}>Choose</button>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
                 </div>
                 </div>
             </div>
@@ -212,11 +184,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular date and time every year</li>
                     </ul>
-<<<<<<< HEAD
                     <button type="button" class="w-100 btn btn-lg btn-outline-primary" name="yearly" onClick={scription}>Choose</button>
-=======
-                    <button type="button" value="yearly" disabled={disable} class="w-100 btn btn-lg btn-outline-primary" onClick={(e)=>{setYearly(e.target.value); setDisable(true);}}>Choose</button>
->>>>>>> 5064c7baf05514b745530f13f98af8d5298a38ce
                 </div>
                 </div>
             </div>
