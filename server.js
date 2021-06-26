@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
-const Entry = require('./models/Entry')
+const User = require('./models/User')
 const cors = require('cors');
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("./config/keys");
 
 const port = process.env.PORT || 9000
 const app = express();
@@ -47,9 +50,39 @@ app.get("/signup", function(req,res){
 app.post("/signup",(req,res)=>{
     var user = req.body.username;
     var pass = req.body.password;
+    "use strict";
 
-    Entry.create(req.body);
-    res.send("login");
+    var alert;  //  added this in to fix
+
+    User.findOne({email: user}).then(user =>{
+        if(user){
+            // alert('hvhvgvjhy')
+            console.log("email already exists...");
+            return res.status(400).json({ email: "Email already exists" });
+        }else{
+            const newUser = new User({
+                name: req.body.name,
+                email: req.body.username,
+                password: req.body.password
+              }); 
+              
+              // Hash password before saving in database
+              bcrypt.genSalt(10, (err, salt) => {
+                  bcrypt.hash(newUser.password, salt, (err, hash) => {
+                    //   if (err){
+                    //       console.log(err);
+                    //   }
+                      newUser.password = hash;
+                      newUser
+                      .save()
+                      .then(user => res.status(200).json(user))
+                      .catch(err => console.log(err));
+                    });
+                });
+
+                // res.status(200).json({email:req.body.username});
+            }
+    })
 
 })
 
@@ -66,19 +99,43 @@ app.post("/login", (req, res)=>{
     var id = req.body.username;
     var ps = req.body.password;
 
-    Entry.findOne({username: id}).then(user=>{
+    User.findOne({email: id}).then(user=>{
         if(!user){
             console.log('email is not correct...')
             return res.status(404).json({emailnotfound:"Email not found"});
         }
-        else{
-            if(user.password===ps){
-                console.log('logged in...');
+         // Check password
+    bcrypt.compare(ps, user.password).then(isMatch => {
+        if (isMatch) {
+          // User matched
+          // Create JWT Payload
+          const payload = {
+            id: user.id,
+            name: user.name
+          };
+  
+          // Sign token
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {
+              expiresIn: 31556926 // 1 year in seconds
+            },
+            (err, token) => {
+              res.json({
+                success: true,
+                token: "Bearer " + token
+              });
             }
-            else{
-                console.log('password-invalid');
-            }
+            );
+            console.log("password is cool....")
+        } else {
+            console.log("wrong ps");
+          return res
+            .status(400)
+            .json({ passwordincorrect: "Password incorrect" });
         }
+      });
     })
 })
 
