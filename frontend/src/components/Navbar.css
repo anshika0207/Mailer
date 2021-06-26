@@ -30,7 +30,7 @@
 }
 .btn:hover{
     color: white;
-    background-color: gray;
+    /* background-color: gray; */
 }
 .form__btn{
     margin-left: 70rem;

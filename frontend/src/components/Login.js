@@ -4,6 +4,9 @@ import './Login.css'
 import axios from "./axios";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import MailOutlinedIcon from "@material-ui/icons/MailOutlined";
+import { Avatar, IconButton } from "@material-ui/core";
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 var userIsRegistered=true;
 
@@ -38,7 +41,17 @@ function Login() {
                 value={password}
                 placeholder="Enter password"/>
 
-                <button type="submit">Login</button>
+                <Button type="submit" className="btnReact">Login</Button>
+                <p className="forgotPass"> <Link>Forgot password?</Link>  </p>
+                <div>
+          <p>Login with</p>
+          <IconButton>
+            <MailOutlinedIcon />
+          </IconButton>
+          <IconButton>
+          <FacebookIcon />
+          </IconButton>
+        </div>
             </form>
             {stateOfForm && 
         <Link to="/home">

@@ -1,15 +1,32 @@
 .app__login{
     text-align: center;
-    margin: 1rem;
+    margin: 0rem;
 
 }
 .login__form{
+    margin-top: 32px !important;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     align-content: center;
     text-align: center;
+    margin: auto;
 }
 .login__form>input{
     padding: 0.5rem;
+    margin : 12px;
+    border-radius: 10px;
+    outline-width: 0;
+}
+.btnReact{
+    box-shadow: 5px 5px 20px #888888;
+    background: rgb(53, 53, 172) !important;
+    color: white !important;
+    width: 25rem;
+    border-radius: 20px !important;
+    margin: 12px auto !important;
+    height: 2.8rem;
+}
+.forgotPass{
+    margin-left: 25rem;
 }

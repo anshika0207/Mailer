@@ -8,35 +8,6 @@ var userIsRegistered=true;
 
 function Home(){
 
-// <<<<<<< HEAD
-    // var [company, setcompany] = useState("");
-    // var [subject, setsubject] = useState("");
-    // var [mailbody, setmailbody] = useState("");
-    // var [emails, setemails] = useState("");
-    
-    // function cmp(event){
-      //     setcompany(event.target.value);
-    //     // console.log({company});
-    // }
-    
-    // function sub(event){
-    //     setsubject(event.target.value);
-    // }
-    
-    // function bady(event){
-      //     setmailbody(event.target.value);
-      // }
-      
-      // function ez(event){
-        //     setemails(event.target.value);
-        // }
-
-    
-    // function submit(){
-      
-      // }
-      
-      // =======
       const [plan, setplan] = useState("");
       function onclickBtn(event){
           return setplan(event.target.name);
@@ -57,20 +28,6 @@ function Home(){
     console.log(Company);
     console.log(Emails);
     console.log(Mailbody);
-
-
-    // if(Reccuring){
-    //   plan = Reccuring;
-    // }
-    // else if(Monthly){
-    //   plan = Monthly;
-    // }
-    // else if(Weekly){
-    //   plan = Weekly;
-    // }
-    // else if(Yearly){
-    //   plan = Yearly;
-    // }
 
     let emails = Emails.split('\n');
     axios.post('/submitForm',{
