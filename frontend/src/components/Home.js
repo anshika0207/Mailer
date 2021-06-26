@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-function Home() {
-    return (
-        <div>
-            Main landing page
-        </div>
-    )
-}
-
-export default Home
-=======
 import React from "react";
 import Navbar from "./Navbar";
 import './Home.css';
@@ -123,4 +110,3 @@ function Home(){
 }
 
 export default Home;
->>>>>>> bdaa700eaedab8d60a16503b51d093e7ce97b81a
