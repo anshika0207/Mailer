@@ -12,6 +12,10 @@
     border: black;
 }
 
+.navbar{
+    color:whitesmoke;
+}
+
 .navbar h1{
     font-size: 45px;
     font-family: 'Poiret One', cursive;
