@@ -1,11 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import Home from './Home';
 
-function randomHome() {
+
+function RandomHome() {
     return (
         <div>
-            home
+            <p>Home page </p>
         </div>
     )
 }
 
-export default randomHome
+export default RandomHome

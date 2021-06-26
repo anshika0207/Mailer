@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Route,Switch
 } from "react-router-dom";
+import RandomHome from './components/RandomHome';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/home" component={RandomHome} />
       </Router>
 </div>
 );

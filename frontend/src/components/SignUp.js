@@ -1,16 +1,21 @@
 import { render } from '@testing-library/react';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "./axios";
 import './SignUp.css';
-import randomHome from './randomHome';
+import RandomHome from './RandomHome'
+import { Link } from "react-router-dom";
 
 function SignUp() {
 
     const [name, setname] = useState("");
+    const [stateOfForm, setstateOfForm] = useState("");
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
     const [confirm, setconfirm] = useState("");
 
+    useEffect(() => {
+        setstateOfForm(false);
+    }, [])
     const signupuser= async (event) => {
         event.preventDefault();
 
@@ -21,19 +26,19 @@ function SignUp() {
             confirm: confirm
         })
 
-        let data = res.status;
-        alert(data.type);
-        if(data === '200'){
-            return <randomHome />
-        }
+        let data = res.data;
+        alert(data.json);
 
         setname("");
         setusername("");
         setpassword("");
         setconfirm("");
+        setstateOfForm(true);
     }
 
     return (
+        <div>
+
         <form action="" className="signup__form app__sign"  onSubmit={signupuser}>
 
             <input type="text" onChange={(event)=> setname(event.target.value)}
@@ -56,6 +61,13 @@ function SignUp() {
 
             <button type="submit">Sign Up</button>
         </form>
+
+        {stateOfForm && 
+        <Link to="/home">
+            home
+        </Link> 
+         } 
+            </div>
     )
 }
 

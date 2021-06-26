@@ -7,6 +7,7 @@ const cors = require('cors');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("./config/keys");
+const webpush = require('web-push')
 
 const port = process.env.PORT || 9000
 const app = express();
@@ -56,9 +57,24 @@ app.post("/signup",(req,res)=>{
 
     User.findOne({email: user}).then(user =>{
         if(user){
+          const subscription = req.body
+
+          console.log(subscription)
+        
+          const payload = JSON.stringify({
+            title: 'Hello!',
+            body: 'It works.',
+          })
+        
+          webpush.sendNotification(subscription, payload)
+            .then(result => console.log(result))
+            .catch(e => console.log(e.stack))
+        
+          // res.status(200).json({'success': true})
+      
             // alert('hvhvgvjhy')
             console.log("email already exists...");
-            return res.status(400).json({ email: "Email already exists" });
+            return res.status(400).json({ "email": "Email already exists" });
         }else{
             const newUser = new User({
                 name: req.body.name,

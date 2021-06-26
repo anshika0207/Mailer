@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button';
 import './Login.css'
 import axios from "./axios";
+import { Link } from "react-router-dom";
 
 function Login() {
 
     const [username, setusername] = useState("")
     const [password, setpassword] = useState("")
+    const [stateOfForm, setstateOfForm] = useState("");
 
     const loginValidation = (e)=>{
         e.preventDefault();
@@ -18,6 +20,7 @@ function Login() {
 
         setusername("");
         setpassword("");
+        setstateOfForm(true);
     }
     return (
 
@@ -33,6 +36,11 @@ function Login() {
 
                 <button type="submit">Login</button>
             </form>
+            {stateOfForm && 
+        <Link to="/home">
+            home
+        </Link> 
+         }
         </div>
     )
 }
