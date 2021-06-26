@@ -37,37 +37,34 @@ db.once('open',()=>{
     console.log("DB connected.");
 })
 /////mailing////
-
-
-      let stars = "* * * * *";
-
+      var stars = "* * * * *";
       Mail.find({},function(err, entries){
         if(err){
           console.log(err);
         }
         else{
-          entries.forEach(function (entry){
-            if(entry.plan === "recurring"){
+          entries.forEach(function(entry){
+            console.log(entry);
+            var ep = entry.plan;
+            var rec = "recurring";
+            var wee = "weekly";
+            var mon = "monthly";
+            var ye = "yearly";
+            if(ep === rec){
               stars="20 * * * * *";
             }
-            if(entry.plan === "weekly"){
+            if(ep === wee){
               stars="* * * * 7";
             }
-            if(entry.plan === "monthly"){
+            if(ep === mon){
               stars="* * 2 * *";
             }
-            if(entry.plan === "yearly"){
+            if(ep === ye){
               stars="* * * 7 *";
             }
-
-            entry.emails.forEach(function(email){
-              let mailOptions = {
-                from: entry.company,
-                to: email,
-                subject: entry.subject,
-                text: entry.mailcontent
-           };
-            });
+            // else{
+            //   console.log(stars);
+            // }
 
             let transporter = nodemailer.createTransport({
               service: 'gmail',
@@ -78,19 +75,26 @@ db.once('open',()=>{
           });
 
 
-    
-          cron.schedule(stars, () => {
-            // Send e-mail
-            transporter.sendMail(mailOptions, function(error, info){
-                  if (error) {
-                    console.log(error);
-                  } else {
-                    console.log('Email sent: ' + info.response);
-                  }
+          entry.emails.forEach(function(email){
+            let mailOptions = {
+              from: entry.company,
+              to: email,
+              subject: entry.subject,
+              text: entry.mailbody
+            };
+            console.log(entry.company);
+            cron.schedule(stars, () => {
+              // Send e-mail
+              transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                      console.log(error);
+                    } else {
+                      console.log('Email sent: ' + info.response);
+                    }
+                });
               });
-            });
-
-          })
+          });
+          });
         }
       });
 
@@ -226,7 +230,9 @@ app.post("/login", (req, res)=>{
     })
 })
 
-
+app.post("/home", function(req,res){
+  res.redirect("/");
+})
 
 
 app.listen(port, function(req,res){

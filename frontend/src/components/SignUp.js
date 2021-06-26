@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import axios from "./axios";
 import './SignUp.css';
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+
+var userIsRegistered=true;
 
 function SignUp() {
 
@@ -37,7 +40,7 @@ function SignUp() {
 
     return (
         <div>
-
+        <Navbar registeration = {userIsRegistered}/>
         <form action="" className="signup__form app__sign"  onSubmit={signupuser}>
 
             <input type="text" onChange={(event)=> setname(event.target.value)}

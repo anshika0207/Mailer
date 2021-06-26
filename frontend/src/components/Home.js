@@ -42,14 +42,17 @@ function Home(){
           return setplan(event.target.name);
       }
       const [Company, setCompany] = useState("");
+  const [Company, setCompany] = useState("");
   const [Emails, setEmails] = useState("");
   const [Subject, setSubject] = useState("");
-  const [EmailContent, setEmailContent] = useState("");
+  const [Mailbody, setMailbody] = useState("");
+  const [plan, setplan] = useState("");
   
   const [disable, setDisable] = React.useState(false);
-  
 
-  const onSubmitForm = (e)=>{
+  function onclickBtn(event){
+    return setplan(event.target.name);
+}
 
     e.preventDefault();
     console.log(Company);
@@ -66,7 +69,7 @@ function Home(){
 
     setCompany("");
     setEmails("");
-    setEmailContent("");
+    setMailbody("");
     setSubject("");
 
     routeChange();
@@ -107,14 +110,19 @@ function Home(){
                 Valid company name is required.
               </div>
             </div>
-            <div class="col-12 ">
-              <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span>  </label>
+            <div class="col-12">
+              <label for="username" class="form-label">Body <span class="text-muted">Content of the email.</span></label>
+              <input type="text" class="form-control" id="firstName" onChange={(e)=>setMailbody(e.target.value)} required/>
+            </div>
+
+            {/* <div class="col-12 ">
+              <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span></label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-                <input name="comments" type="text" class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmailContent(e.target.value)} required/>
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" onChange={(e)=>setMailbody(e.target.value)}></textarea>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div class="col-12 ">
               <label for="username" class="form-label">Users <span class="text-muted">Enter user email address, with each on new line.</span>  </label>
@@ -197,7 +205,7 @@ function Home(){
       </div>
     </div>
     )
-}
+
 // onClick={routeChange}
 
 export default Home;
