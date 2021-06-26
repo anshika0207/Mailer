@@ -43,36 +43,25 @@ app.get('/',(req,res)=>{
     res.render('.')
 })
 
+//routes to store data in mongo-mongo
+
+app.post('/submitForm',(req,res)=>{
+  console.log(req.body);
+})
+
 // signup page 
 app.get("/signup", function(req,res){
     res.render("signup");
 });
 
+
+
 app.post("/signup",(req,res)=>{
     var user = req.body.username;
     var pass = req.body.password;
-    "use strict";
-
-    var alert;  //  added this in to fix
 
     User.findOne({email: user}).then(user =>{
         if(user){
-          const subscription = req.body
-
-          console.log(subscription)
-        
-          const payload = JSON.stringify({
-            title: 'Hello!',
-            body: 'It works.',
-          })
-        
-          webpush.sendNotification(subscription, payload)
-            .then(result => console.log(result))
-            .catch(e => console.log(e.stack))
-        
-          // res.status(200).json({'success': true})
-      
-            // alert('hvhvgvjhy')
             console.log("email already exists...");
             return res.status(400).json({ "email": "Email already exists" });
         }else{
@@ -154,6 +143,8 @@ app.post("/login", (req, res)=>{
       });
     })
 })
+
+
 
 
 app.listen(port, function(req,res){
