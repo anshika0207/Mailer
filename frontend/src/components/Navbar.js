@@ -12,10 +12,20 @@ import './Navbar.css'
 
 function Navbar(props) {
 
+  const history = useHistory();
+
+  const routeForLogin = () =>{ 
+    let path = `/login`; 
+    history.push(path);
+  }
+  const routeForSignup = () =>{ 
+    let path = `/signup`; 
+    history.push(path);
+  }
     return (
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-          <h1 class="navbar-brand" >Mailer</h1>
+          <h1 class="navbar-brand mailer" >Mailer</h1>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,8 +33,10 @@ function Navbar(props) {
 
           {props.registeration? null : 
             <form class="d-flex">
-              <button class="btn btn-outline-success" type="submit" ><Link to="/login">Login</Link></button>
-              <button class="btn btn-outline-success" type="submit"><Link to="/signup">Sign Up!</Link></button>
+              <div className="form__btn">
+              <button class="btn btn-outline-success" type="submit" onClick={routeForLogin} >Login</button>
+              <button class="btn btn-outline-success" type="submit" onClick={routeForSignup}>Sign Up</button>
+              </div>
             </form>
           }
 

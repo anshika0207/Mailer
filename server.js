@@ -14,17 +14,39 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 
+const port = process.env.PORT || 9000
+const app = express();
+app.use(cors());
+
+//password = x8OmczyJQTSm9niJ
+const mongoURL = 'mongodb+srv://girlgeeksHackathon:x8OmczyJQTSm9niJ@cluster0.7ty9u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+
+mongoose.connect(mongoURL, {
+    useCreateIndex:true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+mongoose.connection.on('connect', function() {
+    console.error('MongoDB has connected successfully');
+  });
+
+const db = mongoose.connection;
+
+db.once('open',()=>{
+    console.log("DB connected.");
+})
 /////mailing////
 
 
-      stars = "";
+      let stars = "* * * * *";
 
       Mail.find({},function(err, entries){
         if(err){
           console.log(err);
         }
         else{
-          entries.forEach(function(entry){
+          entries.forEach(function (entry){
             if(entry.plan === "recurring"){
               stars="20 * * * * *";
             }
@@ -75,28 +97,6 @@ require('dotenv').config();
 
 
 
-const port = process.env.PORT || 9000
-const app = express();
-app.use(cors());
-
-//password = x8OmczyJQTSm9niJ
-const mongoURL = 'mongodb+srv://girlgeeksHackathon:x8OmczyJQTSm9niJ@cluster0.7ty9u.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
-mongoose.connect(mongoURL, {
-    useCreateIndex:true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
-mongoose.connection.on('connect', function() {
-    console.error('MongoDB has connected successfully');
-  });
-
-  const db = mongoose.connection;
-
-db.once('open',()=>{
-    console.log("DB connected.");
-})
 
 
 app.use(express.json()); 
@@ -117,7 +117,6 @@ app.get('/mailDetails', (req,res)=>{
       console.log(err)
       res.status(500).send(err)
     }else{
-      // var dataToSend = JSON.parse(data);
         console.log(data);
           res.status(200).send(data);
       }
@@ -126,14 +125,6 @@ app.get('/mailDetails', (req,res)=>{
 
 app.post('/submitForm',(req,res)=>{
   console.log(req.body);
-
-  // const newMail = new Mail({
-  //   company: req.body.company,
-  //   subject:req.body.subject,
-  //   mailbody : req.body.mailcontent,
-  //   emails: req.body.emails,
-  //   plan : req.body.plan
-  // })
 
   Mail.create(req.body);
   res.json(req.body);

@@ -1,34 +1,23 @@
-import axios from './axios'
-import React, {Component}  from 'react'
-import { useState,useEffect } from "react";
+import axios from "./axios";
+import React, { Component } from "react";
+import { useState, useEffect } from "react";
+import './HomepageInfo.css'
 
+function HomepageInfo({ maildetails }) {
+  const array = [1, 2, 3];
 
-function HomepageInfo({maildetails}){ 
-
-const array = [1,2,3];
-
-function  callItem(e){
-    return <p> {e.emails}</p>
-}
-        return (
-            <div>
-                {/* {maildetails.emails.map((mail,i)=>{
-                    <div>
-
-                        <li key={i}>{mail.company}</li>
-                        <p>{mail.company}</p>
-                    </div>
-                })} */}
-
-                <p>
-                {maildetails.map(arr=>{
-                    <p>{arr.company}</p>
-                })}
-                {maildetails.map(callItem)}
-                </p>
-                
-            </div>
-        )
+  function callItem(e) {
+    function callEmail(event) {
+      return <li>{event}</li>;
+    }
+    return (
+      <div className="email__person">
+        <h2>{e.company}</h2>
+        <p> {e.emails.map(callEmail)}</p>
+      </div>
+    );
+  }
+  return <div>{maildetails.map(callItem)}</div>;
 }
 
-export default HomepageInfo
+export default HomepageInfo;

@@ -7,6 +7,7 @@ import Home from './components/Home';
 import axios from './components/axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import {Redirect} from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Route,Switch
@@ -36,6 +37,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         <Route path="/home" component={Home} />
+
         <Route path="/gotohome">
         <HomepageInfo maildetails  = {maildetails}/>
         </Route>

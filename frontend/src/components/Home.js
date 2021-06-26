@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import './Home.css';
 import axios from "./axios";
+import {Redirect} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 var userIsRegistered=true;
 
 function Home(){
@@ -35,7 +37,7 @@ function Home(){
       // }
       
       // =======
-      var [plan, setplan] = useState("");
+      const [plan, setplan] = useState("");
       function onclickBtn(event){
           return setplan(event.target.name);
       }
@@ -49,22 +51,9 @@ function Home(){
 
   const onSubmitForm = (e)=>{
 
-    let plan;
     e.preventDefault();
     console.log(Company);
     console.log(Emails);
-    // if(Reccuring){
-    //   plan = Reccuring;
-    // }
-    // else if(Monthly){
-    //   plan = Monthly;
-    // }
-    // else if(Weekly){
-    //   plan = Weekly;
-    // }
-    // else if(Yearly){
-    //   plan = Yearly;
-    // }
 
     let emails = Emails.split('\n');
     axios.post('/submitForm',{
@@ -72,13 +61,21 @@ function Home(){
       emails:emails,
       plan:plan,
       subject:Subject,
-      mailcontent:EmailContent 
+      mailbody:EmailContent 
     })
 
     setCompany("");
     setEmails("");
     setEmailContent("");
     setSubject("");
+
+    routeChange();
+  }
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/`; 
+    history.push(path);
   }
 
     return(
@@ -114,7 +111,7 @@ function Home(){
               <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span>  </label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmailContent(e.target.value)}></textarea>
+                <input name="comments" type="text" class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmailContent(e.target.value)} required/>
                 </div>
               </div>
             </div>
@@ -194,12 +191,13 @@ function Home(){
 
           <hr class="my-4"/>
 
-          <button class="w-100 btn btn-outline-primary btn-lg" type="submit">Submit</button>
+          <button class="w-100 btn btn-outline-primary btn-lg" type="submit" >Submit</button>
         </form>
       </div>
       </div>
     </div>
     )
 }
+// onClick={routeChange}
 
 export default Home;

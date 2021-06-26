@@ -6,8 +6,8 @@ const mailSchema = new Schema({
     company: String,
     subject: String,
     mailbody: String,
-    emails: [String],
     plan: String,
+    emails: [String]
     // date: Date.now()
 })
 
