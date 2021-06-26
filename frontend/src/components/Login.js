@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import './Login.css'
 import axios from "./axios";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+
+var userIsRegistered=true;
 
 function Login() {
 
@@ -25,6 +28,7 @@ function Login() {
     return (
 
         <div className="app__login">
+        <Navbar registeration = {userIsRegistered}/>
             <form action="" className="login__form"  onSubmit={loginValidation}>
                 <input type="text" onChange={(e)=> setusername(e.target.value)}
                  placeholder="Enter username"

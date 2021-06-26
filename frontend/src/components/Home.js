@@ -6,53 +6,25 @@ var userIsRegistered=true;
 
 function Home(){
 
-// <<<<<<< HEAD
-    // var [company, setcompany] = useState("");
-    // var [subject, setsubject] = useState("");
-    // var [mailbody, setmailbody] = useState("");
-    // var [emails, setemails] = useState("");
-    
-    // function cmp(event){
-      //     setcompany(event.target.value);
-    //     // console.log({company});
-    // }
-    
-    // function sub(event){
-    //     setsubject(event.target.value);
-    // }
-    
-    // function bady(event){
-      //     setmailbody(event.target.value);
-      // }
-      
-      // function ez(event){
-        //     setemails(event.target.value);
-        // }
-
-    
-    // function submit(){
-      
-      // }
-      
-      // =======
-      var [plan, setplan] = useState("");
-      function onclickBtn(event){
-          return setplan(event.target.name);
-      }
-      const [Company, setCompany] = useState("");
+  const [Company, setCompany] = useState("");
   const [Emails, setEmails] = useState("");
   const [Subject, setSubject] = useState("");
-  const [EmailContent, setEmailContent] = useState("");
+  const [Mailbody, setMailbody] = useState("");
+  const [plan, setplan] = useState("");
   
   const [disable, setDisable] = React.useState(false);
-  
+
+  function onclickBtn(event){
+    return setplan(event.target.name);
+}
 
   const onSubmitForm = (e)=>{
-
-    let plan;
     e.preventDefault();
     console.log(Company);
     console.log(Emails);
+    console.log(Mailbody);
+
+
     // if(Reccuring){
     //   plan = Reccuring;
     // }
@@ -72,12 +44,12 @@ function Home(){
       emails:emails,
       plan:plan,
       subject:Subject,
-      mailcontent:EmailContent 
+      mailbody:Mailbody 
     })
 
     setCompany("");
     setEmails("");
-    setEmailContent("");
+    setMailbody("");
     setSubject("");
   }
 
@@ -110,14 +82,19 @@ function Home(){
                 Valid company name is required.
               </div>
             </div>
-            <div class="col-12 ">
-              <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span>  </label>
+            <div class="col-12">
+              <label for="username" class="form-label">Body <span class="text-muted">Content of the email.</span></label>
+              <input type="text" class="form-control" id="firstName" onChange={(e)=>setMailbody(e.target.value)} required/>
+            </div>
+
+            {/* <div class="col-12 ">
+              <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span></label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmailContent(e.target.value)}></textarea>
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" onChange={(e)=>setMailbody(e.target.value)}></textarea>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div class="col-12 ">
               <label for="username" class="form-label">Users <span class="text-muted">Enter user email address, with each on new line.</span>  </label>

@@ -1,7 +1,6 @@
-.app__signup{
+.app__sign{
     text-align: center;
-    margin: 1rem;
-
+    margin: 300px;
 }
 .signup__form{
     display: flex;
