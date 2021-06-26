@@ -42,11 +42,9 @@ function Home(){
           return setplan(event.target.name);
       }
       const [Company, setCompany] = useState("");
-  const [Company, setCompany] = useState("");
   const [Emails, setEmails] = useState("");
   const [Subject, setSubject] = useState("");
   const [Mailbody, setMailbody] = useState("");
-  const [plan, setplan] = useState("");
   
   const [disable, setDisable] = React.useState(false);
 
@@ -54,9 +52,25 @@ function Home(){
     return setplan(event.target.name);
 }
 
+  const onSubmitForm = (e)=>{
     e.preventDefault();
     console.log(Company);
     console.log(Emails);
+    console.log(Mailbody);
+
+
+    // if(Reccuring){
+    //   plan = Reccuring;
+    // }
+    // else if(Monthly){
+    //   plan = Monthly;
+    // }
+    // else if(Weekly){
+    //   plan = Weekly;
+    // }
+    // else if(Yearly){
+    //   plan = Yearly;
+    // }
 
     let emails = Emails.split('\n');
     axios.post('/submitForm',{
@@ -64,7 +78,7 @@ function Home(){
       emails:emails,
       plan:plan,
       subject:Subject,
-      mailbody:EmailContent 
+      mailbody:Mailbody 
     })
 
     setCompany("");
@@ -205,7 +219,7 @@ function Home(){
       </div>
     </div>
     )
-
+}
 // onClick={routeChange}
 
 export default Home;
