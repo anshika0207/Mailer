@@ -11,3 +11,13 @@
 .navbar li{
     border: black;
 }
+
+.navbar h1{
+    font-size: 45px;
+    font-family: 'Poiret One', cursive;
+    color: whitesmoke;
+}
+
+.btn{
+    padding: 10px;
+}

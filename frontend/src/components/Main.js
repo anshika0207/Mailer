@@ -8,7 +8,9 @@ function Main(){
         <div className="mainarea">
             <div className="text" >
                 <h1>Market your business</h1>
-                <h2>Send emails to your clients, on monthly/weekly/daily basis. See your business grow with us!</h2>
+                <br/>
+                <br/>
+                <h3>Send emails to your clients, on monthly/weekly/daily basis. See your business grow with us!</h3>
             </div>
         <img className="img" src={image}/>
         </div>

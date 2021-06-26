@@ -11,14 +11,41 @@ import SignUp from './SignUp';
 import './Navbar.css'
 
 function Navbar() {
+
     return (
-        <div className="app__navbar">
-              <ul  className="navbar__route">
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signup">Sign Up</Link></li>
-        </ul>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <h1 class="navbar-brand">Mailer</h1>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <form class="d-flex">
+              <button class="btn btn-outline-success" type="submit" ><Link to="/login">Login</Link></button>
+              <button class="btn btn-outline-success" type="submit"><Link to="/signup">Sign Up!</Link></button>
+            </form>
+          </div>
         </div>
+      </nav>
     )
 }
 
-export default Navbar
+export default Navbar;
+
+
+
+
+
+
+
+
+
+  //////////////// incase needed later ///////////
+
+
+        // <div className="app__navbar">
+        //       <ul  className="navbar__route">
+        //   
+        //   <li></li>
+        // </ul>
+        // </div>
