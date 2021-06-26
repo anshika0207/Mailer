@@ -5,6 +5,7 @@
     padding: 200px;
     font-family: 'Prata', serif;
     letter-spacing: 2px;
+    background-color: #FFF5DA;
 }
 
 .mainarea img{
@@ -22,6 +23,5 @@
 }
 
 body{
-    background-color: #FFF5DA;
     font-style: 'Benne', serif;
 }
