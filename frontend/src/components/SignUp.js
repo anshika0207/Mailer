@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react'
 import axios from "./axios";
 import './SignUp.css';
-import RandomHome from './RandomHome'
 import { Link } from "react-router-dom";
 
 function SignUp() {
