@@ -3,12 +3,77 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const User = require('./models/User')
+const Mail = require('./models/Mail')
 const cors = require('cors');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("./config/keys");
-const webpush = require('web-push')
-const Mail = require('./models/Mail');
+const webpush = require('web-push');
+const cron = require('node-cron');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+
+/////mailing////
+
+
+      stars = "";
+
+      Mail.find({},function(err, entries){
+        if(err){
+          console.log(err);
+        }
+        else{
+          entries.forEach(function(entry){
+            if(entry.plan === "recurring"){
+              stars="20 * * * * *";
+            }
+            if(entry.plan === "weekly"){
+              stars="* * * * 7";
+            }
+            if(entry.plan === "monthly"){
+              stars="* * 2 * *";
+            }
+            if(entry.plan === "yearly"){
+              stars="* * * 7 *";
+            }
+
+            entry.emails.forEach(function(email){
+              let mailOptions = {
+                from: entry.company,
+                to: email,
+                subject: entry.subject,
+                text: entry.mailcontent
+           };
+            });
+
+            let transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD
+              }
+          });
+
+
+    
+          cron.schedule(stars, () => {
+            // Send e-mail
+            transporter.sendMail(mailOptions, function(error, info){
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    console.log('Email sent: ' + info.response);
+                  }
+              });
+            });
+
+          })
+        }
+      });
+
+
+
 
 const port = process.env.PORT || 9000
 const app = express();
