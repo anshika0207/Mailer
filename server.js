@@ -51,7 +51,7 @@ db.once('open',()=>{
             var mon = "monthly";
             var ye = "yearly";
             if(ep === rec){
-              stars="20 * * * * *";
+              stars="1 * * * * *";
             }
             if(ep === wee){
               stars="* * * * 7";
@@ -66,17 +66,19 @@ db.once('open',()=>{
             //   console.log(stars);
             // }
 
-            let transporter = nodemailer.createTransport({
+            var transporter = nodemailer.createTransport({
               service: 'gmail',
+              // sendmail: true,
               auth: {
                 user: process.env.EMAIL,
                 pass: process.env.PASSWORD
               }
+              
           });
 
 
           entry.emails.forEach(function(email){
-            let mailOptions = {
+            var mailOptions = {
               from: entry.company,
               to: email,
               subject: entry.subject,
