@@ -11,40 +11,39 @@ function Home(){
     // var [subject, setsubject] = useState("");
     // var [mailbody, setmailbody] = useState("");
     // var [emails, setemails] = useState("");
-    // var [plan, setplan] = useState("");
-
+    
     // function cmp(event){
-    //     setcompany(event.target.value);
+      //     setcompany(event.target.value);
     //     // console.log({company});
     // }
-
+    
     // function sub(event){
     //     setsubject(event.target.value);
     // }
-
+    
     // function bady(event){
-    //     setmailbody(event.target.value);
-    // }
+      //     setmailbody(event.target.value);
+      // }
+      
+      // function ez(event){
+        //     setemails(event.target.value);
+        // }
 
-    // function ez(event){
-    //     setemails(event.target.value);
-    // }
-
-    // function scription(event){
-    //     setplan(event.target.name);
-    // }
-
+    
     // function submit(){
-
-    // }
-
-// =======
-  const [Company, setCompany] = useState("");
+      
+      // }
+      
+      // =======
+      var [plan, setplan] = useState("");
+      function onclickBtn(event){
+          return setplan(event.target.name);
+      }
+      const [Company, setCompany] = useState("");
   const [Emails, setEmails] = useState("");
-  const [Reccuring, setReccuring] = useState("")
-  const [Weekly, setWeekly] = useState("");
-  const [Monthly, setMonthly] = useState("");
-  const [Yearly, setYearly] = useState(""); 
+  const [Subject, setSubject] = useState("");
+  const [EmailContent, setEmailContent] = useState("");
+  
   const [disable, setDisable] = React.useState(false);
   
 
@@ -54,30 +53,30 @@ function Home(){
     e.preventDefault();
     console.log(Company);
     console.log(Emails);
-    console.log(Reccuring);
-    console.log(Monthly);
-    console.log(Weekly);
-    console.log(Yearly);
-    if(Reccuring){
-      plan = Reccuring;
-    }
-    else if(Monthly){
-      plan = Monthly;
-    }
-    else if(Weekly){
-      plan = Weekly;
-    }
-    else if(Yearly){
-      plan = Yearly;
-    }
+    // if(Reccuring){
+    //   plan = Reccuring;
+    // }
+    // else if(Monthly){
+    //   plan = Monthly;
+    // }
+    // else if(Weekly){
+    //   plan = Weekly;
+    // }
+    // else if(Yearly){
+    //   plan = Yearly;
+    // }
     axios.post('/submitForm',{
       company:Company,
       emails:Emails,
-      plans:plan
+      plan:plan,
+      subject:Subject,
+      mailcontent:EmailContent 
     })
 
     setCompany("");
     setEmails("");
+    setEmailContent("");
+    setSubject("");
   }
 
     return(
@@ -85,7 +84,7 @@ function Home(){
     <Navbar registeration = {userIsRegistered}/>
     <div class = "container">
         <div class="py-5 text-center home container">
-        <h2>Subscription Form</h2>
+        <h2>Sub Form</h2>
         <p class="lead">Fill in then details below to help us send your clients regular emails!</p>
         </div>
 
@@ -96,7 +95,7 @@ function Home(){
           <div class="row g">
             <div class="col-sm">
               <label for="firstName" class="form-label">Company Name</label>
-              <input type="text" class="form-control" id="firstName" onChange={cmp} required/>
+              <input type="text" class="form-control" id="firstName" onChange={(e)=>setCompany(e.target.value)} required/>
               <div class="invalid-feedback">
                 Valid company name is required.
               </div>
@@ -104,7 +103,7 @@ function Home(){
 
             <div class="col-sm">
               <label for="firstName" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="firstName" onChange={sub} required/>
+              <input type="text" class="form-control" id="firstName" onChange={(e)=>setSubject(e.target.value)} required/>
               <div class="invalid-feedback">
                 Valid company name is required.
               </div>
@@ -113,7 +112,7 @@ function Home(){
               <label for="username" class="form-label">Body<span class="text-muted">Body of the email.</span>  </label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={bady}></textarea>
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmailContent(e.target.value)}></textarea>
                 </div>
               </div>
             </div>
@@ -122,7 +121,7 @@ function Home(){
               <label for="username" class="form-label">Users <span class="text-muted">Enter user email address, with each on new line.</span>  </label>
               <div class="input-group">
               <div class="form-group shadow-textarea col-lg">
-                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={ez}></textarea>
+                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" placeholder="Enter emails here.." onChange={(e)=>setEmails(e.target.value)}></textarea>
                 </div>
               </div>
             </div>
@@ -145,7 +144,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient after every 20 or 30 second every day</li>
                     </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  name="recurring" onClick={scription}>Choose</button>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  disabled={disable} name="recurring" onClick={(e)=>{onclickBtn(e); setDisable(true); }}>Choose</button>
                 </div>
                 </div>
             </div>
@@ -158,7 +157,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular day and time of every week</li>
                     </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  name="weekly" onClick={scription}>Choose</button>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  disabled={disable} name="weekly" onClick={(e)=>{onclickBtn(e); setDisable(true); }}>Choose</button>
                 </div>
                 </div>
             </div>
@@ -171,7 +170,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular date and time of every month</li>
                     </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary" name="monthly" onClick={scription}>Choose</button>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  disabled={disable} name="monthly" onClick={(e)=>{onclickBtn(e); setDisable(true); }}>Choose</button>
                 </div>
                 </div>
             </div>
@@ -184,7 +183,7 @@ function Home(){
                     <ul class="list-unstyled mt-3 mb-4">
                     <li>sent to the recipient on any particular date and time every year</li>
                     </ul>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary" name="yearly" onClick={scription}>Choose</button>
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary"  disabled={disable} name="yearly" onClick={(e)=>{onclickBtn(e); setDisable(true); }}>Choose</button>
                 </div>
                 </div>
             </div>
@@ -193,7 +192,7 @@ function Home(){
 
           <hr class="my-4"/>
 
-          <button class="w-100 btn btn-outline-primary btn-lg" type="submit" onClick={submit}>Submit</button>
+          <button class="w-100 btn btn-outline-primary btn-lg" type="submit">Submit</button>
         </form>
       </div>
       </div>

@@ -8,6 +8,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("./config/keys");
 const webpush = require('web-push')
+const Mail = require('./models/Mail');
 
 const port = process.env.PORT || 9000
 const app = express();
@@ -47,6 +48,15 @@ app.get('/',(req,res)=>{
 
 app.post('/submitForm',(req,res)=>{
   console.log(req.body);
+
+  const newMail = new Mail({
+    company: req.body.company,
+    subject:req.body.subject,
+    mailbody : req.body.mailcontent,
+    emails: req.body.emails,
+    plan : req.body.plan
+  })
+  res.send(newMail);
 })
 
 // signup page 
