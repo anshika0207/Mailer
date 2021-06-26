@@ -65,9 +65,11 @@ function Home(){
     // else if(Yearly){
     //   plan = Yearly;
     // }
+
+    let emails = Emails.split('\n');
     axios.post('/submitForm',{
       company:Company,
-      emails:Emails,
+      emails:emails,
       plan:plan,
       subject:Subject,
       mailcontent:EmailContent 

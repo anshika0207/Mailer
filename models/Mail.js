@@ -6,9 +6,9 @@ const mailSchema = new Schema({
     company: String,
     subject: String,
     mailbody: String,
-    emails: [{email: String}],
+    emails: [String],
     plan: String,
     // date: Date.now()
 })
 
-module.exports = mongoose.model("mails", mailSchema);
+module.exports = mongoose.model("mail", mailSchema);

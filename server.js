@@ -46,17 +46,33 @@ app.get('/',(req,res)=>{
 
 //routes to store data in mongo-mongo
 
+app.get('/mailDetails', (req,res)=>{
+  Mail.find((err,data)=>{
+    if(err){
+      console.log(err)
+      res.status(500).send(err)
+    }else{
+      // var dataToSend = JSON.parse(data);
+        console.log(data);
+          res.status(200).send(data);
+      }
+  })
+})
+
 app.post('/submitForm',(req,res)=>{
   console.log(req.body);
 
-  const newMail = new Mail({
-    company: req.body.company,
-    subject:req.body.subject,
-    mailbody : req.body.mailcontent,
-    emails: req.body.emails,
-    plan : req.body.plan
-  })
-  res.send(newMail);
+  // const newMail = new Mail({
+  //   company: req.body.company,
+  //   subject:req.body.subject,
+  //   mailbody : req.body.mailcontent,
+  //   emails: req.body.emails,
+  //   plan : req.body.plan
+  // })
+
+  Mail.create(req.body);
+  res.json(req.body);
+  console.log(req.body)
 })
 
 // signup page 
