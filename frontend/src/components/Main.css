@@ -31,9 +31,23 @@
 body{
     font-style: 'Benne', serif;
 }
+
+.secondarea{
+    background-color: #FFD8CC;
+    text-align: center;
+    padding: 50px;
+}
+
+.secondarea h1{
+    font-family: 'Prata', serif;
+    text-decoration: underline;
+}
+.secondarea h3{
+    font-family: 'Satisfy', cursive;
+}
 .belowMain{
     display: flex;
-    background-color: bisque;
+    /* background-color: bisque; */
     padding: 23px;
     /* text-align: center; */
     justify-content: center;
@@ -48,6 +62,7 @@ body{
     transform: translate(0px ,-5px);
     /* transition: 0.3s; */
 }
+
 .footer{
     text-align: center;
     height: 52px;

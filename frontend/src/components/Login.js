@@ -9,9 +9,8 @@ import { Avatar, IconButton } from "@material-ui/core";
 import FacebookIcon from '@material-ui/icons/Facebook';
 import { useHistory } from "react-router-dom";
 import GitHubIcon from '@material-ui/icons/GitHub';
-import LoginButton from '../LoginButton';
 
-var userIsRegistered=true;
+var userIsRegistered=false;
 
 function Login() {
 
@@ -65,7 +64,6 @@ function Login() {
                 <p className="forgotPass"> <Link>Forgot password?</Link>  </p>
                 <div>
 
-                <LoginButton/>
           <p>Login with</p>
           <IconButton>
             <MailOutlinedIcon className="mail_btn"/>

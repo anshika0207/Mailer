@@ -10,7 +10,7 @@ import { Avatar, IconButton } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 
-var userIsRegistered = true;
+var userIsRegistered = false;
 
 function SignUp() {
   const [name, setname] = useState("");

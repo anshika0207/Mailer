@@ -22,6 +22,18 @@ function Navbar(props) {
     let path = `/signup`; 
     history.push(path);
   }
+  const routeForSchedule = () =>{ 
+    let path = `/gotohome`; 
+    history.push(path);
+  }
+  const routeForAdd = () =>{ 
+    let path = `/home`; 
+    history.push(path);
+  }
+  const routeForHistory = () =>{ 
+    let path = `/history`; 
+    history.push(path);
+  }
     return (
       <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
@@ -31,11 +43,19 @@ function Navbar(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-          {props.registeration? null : 
+          {props.registeration?
+            <form class="d-flex ">
+              <div className="form__btn">
+              <button class="btn btn-outline-success navb" type="submit" onClick={routeForSchedule}>Scheduled</button>
+              <button class="btn btn-outline-success navb" type="submit" onClick={routeForAdd}>Add Users</button>
+              <button class="btn btn-outline-success navb" type="submit" onClick={routeForHistory}>History</button>
+              </div>
+            </form>
+           : 
             <form class="d-flex">
               <div className="form__btn">
-              <button class="btn btn-outline-success" type="submit" onClick={routeForLogin} >Login</button>
-              <button class="btn btn-outline-success" type="submit" onClick={routeForSignup}>Sign Up</button>
+              <button class="btn btn-outline-success navb" type="submit" onClick={routeForLogin} >Login</button>
+              <button class="btn btn-outline-success navb" type="submit" onClick={routeForSignup}>Sign Up</button>
               </div>
             </form>
           }

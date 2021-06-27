@@ -24,14 +24,15 @@
     color: whitesmoke;
 }
 
-.btn{
+.navb{
     padding: 10px;
-    margin-left: 12px;
+    float: right;
+    margin: 5px;
 }
 .btn:hover{
     color: white;
     /* background-color: gray; */
 }
 .form__btn{
-    margin-left: 70rem;
+    margin-left: 63rem;
 }

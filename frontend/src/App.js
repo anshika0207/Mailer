@@ -5,6 +5,7 @@ import Main from './components/Main';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import History from './components/History';
+import Footer from "./components/Footer";
 import axios from './components/axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
@@ -47,6 +48,7 @@ function App() {
         <Route exact path="/" >
         <Navbar registeration = {userIsRegistered}/>
         <Main />
+        <Footer />
         </Route>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />

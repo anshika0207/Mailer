@@ -57,7 +57,7 @@ function Home(){
     <Navbar registeration = {userIsRegistered}/>
     <div class = "container">
         <div class="py-5 text-center home container">
-        <h2>Sub Form</h2>
+        <h2>Subscription Form</h2>
         <p class="lead">Fill in then details below to help us send your clients regular emails!</p>
         </div>
 
@@ -165,12 +165,12 @@ function Home(){
                 </div>
                 </div>
             </div>
-      </div>
-      </div>
 
           <hr class="my-4"/>
-
+          </div>
           <button class="w-100 btn btn-outline-primary btn-lg" type="submit" >Submit</button>
+      </div>
+
         </form>
       </div>
       </div>

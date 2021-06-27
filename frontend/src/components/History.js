@@ -2,6 +2,7 @@ import React from "react";
 import Table from "./Table";
 import './History.css'
 import Navbar from "./Navbar";
+// import Footer from "./Footer";
 
 var userIsRegistered = true;
 
@@ -37,6 +38,7 @@ function History({sentdetails}){
             })} */}
             </tbody>
         </table>
+        {/* <Footer /> */}
         </div>
     )
 }
