@@ -48,7 +48,7 @@ We do the work of sending recurring emails to your clients for you, so that you 
 2) Clone this GitHub repository into your desktop.
 3) Open command line navigate to the project folder. Then type the following commands to install required dependencies :
 
-     >  npm install async body-parser ejs express mongoose cors nodemailer bcryptjs jsonwebtoken node-cron validator dotenv web-push
+     >  npm install async body-parser ejs express mongoose cors nodemailer bcryptjs jsonwebtoken node-cron validator dotenv web-push concurrently
  
  4) After installation, run the following command to start the application :
     >   npm run dev
