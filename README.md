@@ -35,7 +35,7 @@ We do the work of sending recurring emails to your clients for you, so that you 
      - Has the list of mails sent till now, with their info response and details.
 
 ## Presentation Video
-[![IMAGE ALT TEXT HERE]()](https://www.youtube.com/watch?v=hyvRlOQSzHE)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hyvRlOQSzHE/0.jpg)](https://www.youtube.com/watch?v=hyvRlOQSzHE)
 ## Team
 ### GirlGeeks
 * Anshika Bhatt
