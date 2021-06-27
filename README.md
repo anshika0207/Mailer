@@ -34,8 +34,25 @@ We do the work of sending recurring emails to your clients for you, so that you 
  5) History Page:
      - Has the list of mails sent till now, with their info response and details.
 
+
+
 ## Presentation Video
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hyvRlOQSzHE/0.jpg)](https://www.youtube.com/watch?v=hyvRlOQSzHE)
+
+## Installation
+* It is very easy to use our project if anyone wants. Just follow the steps :
+1) Install the following :
+    -Node.js
+    -MongoDB
+    -VS Code ( recommended , Any other suitable code editor will work )
+2) Clone this GitHub repository into your desktop.
+3) Open command line navigate to the project folder. Then type the following commands to install required dependencies :
+
+     >  npm install async body-parser ejs express mongoose cors nodemailer bcryptjs jsonwebtoken node-cron validator dotenv web-push
+ 
+ 4) After installation, run the following command to start the application :
+    >   npm run dev
+
 ## Team
 ### GirlGeeks
 * Anshika Bhatt
