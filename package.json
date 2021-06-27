@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
@@ -22,10 +23,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "node server.js",
+    "start-watch": "nodemon server.js",
+    "dev": "concurrently \"yarn run start-watch\" \"cd frontend && yarn start\""
   },
   "eslintConfig": {
     "extends": [
