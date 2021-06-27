@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
 const mongoose = require('mongoose');
 const User = require('./models/User')
 const Mail = require('./models/Mail')
+const Sent = require('./models/Sent')
 const cors = require('cors');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -11,6 +11,7 @@ const keys = require("./config/keys");
 const webpush = require('web-push');
 const cron = require('node-cron');
 const nodemailer = require('nodemailer');
+
 require('dotenv').config();
 
 
@@ -91,6 +92,12 @@ db.once('open',()=>{
                     if (error) {
                       console.log(error);
                     } else {
+                      const newSent = new Sent({
+                        name: entry.company,
+                        status: info.response,
+                        subscription: entry.plan
+                      });
+                      newSent.save();
                       console.log('Email sent: ' + info.response);
                     }
                 });
@@ -128,7 +135,17 @@ app.get('/mailDetails', (req,res)=>{
       }
   })
 })
-
+app.get('/sentDetails', (req,res)=>{
+  Sent.find((err,data)=>{
+    if(err){
+      console.log(err)
+      res.status(500).send(err)
+    }else{
+        console.log(data);
+          res.status(200).send(data);
+      }
+  })
+})
 app.post('/submitForm',(req,res)=>{
   console.log(req.body);
 
@@ -183,7 +200,6 @@ app.post("/signup",(req,res)=>{
  
 
 // login page \\
-
 
 app.get("/login", function(req,res){
     res.send("login");
