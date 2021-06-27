@@ -151,7 +151,8 @@ app.post("/signup",(req,res)=>{
     User.findOne({email: user}).then(user =>{
         if(user){
             console.log("email already exists...");
-            return res.status(400).json({ "email": "Email already exists" });
+            // return res.status(400).json({ "email": "Email already exists" }).redirect(`/login`);
+            return res.status(400).redirect(`/login`);
         }else{
             const newUser = new User({
                 name: req.body.name,
@@ -215,7 +216,7 @@ app.post("/login", (req, res)=>{
               expiresIn: 31556926 // 1 year in seconds
             },
             (err, token) => {
-              res.json({
+              res.status(200).json({
                 success: true,
                 token: "Bearer " + token
               });

@@ -2,6 +2,7 @@ import axios from "./axios";
 import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import './HomepageInfo.css'
+import ReactTable from "react-table";
 
 function HomepageInfo({ maildetails }) {
   const array = [1, 2, 3];
@@ -12,7 +13,7 @@ function HomepageInfo({ maildetails }) {
     }
     return (
       <div className="email__person">
-        <h2>{e.company}</h2>
+        <h3>{e.company}</h3>
         <p> {e.emails.map(callEmail)}</p>
       </div>
     );

@@ -7,6 +7,8 @@ import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
 import MailOutlinedIcon from "@material-ui/icons/MailOutlined";
 import { Avatar, IconButton } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+
 
 var userIsRegistered = true;
 
@@ -30,17 +32,34 @@ function SignUp() {
       confirm: confirm,
     });
 
-    let data = res.data;
-    alert(data.json);
+    let data = res.status;
+
+
+    if(data === 200){
+      alert(data);
+      routeChange();
+      // alert('email already exists!')
+    }
+    // else{
+    //   alert("its going here")
+    //   routeChangeForNotFound();
+    // }
 
     setname("");
     setusername("");
     setpassword("");
-    setconfirm("");
-    setstateOfForm(true);
-
-    
+    setconfirm(""); 
   };
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `/`; 
+    history.push(path);
+  }
+  // const routeChangeForNotFound = () =>{ 
+  //   let path = `/`; 
+  //   history.push(path);
+  // }
 
   return (
     <div>
@@ -80,8 +99,6 @@ function SignUp() {
         
  
       </form>
-
-      {stateOfForm && <Link to="/home">home</Link>}
     </div>
   );
 }

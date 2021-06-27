@@ -8,6 +8,7 @@ import axios from './components/axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import {Redirect} from 'react-router-dom';
+
 import {
   BrowserRouter as Router,
   Route,Switch
@@ -29,6 +30,7 @@ function App() {
   return (
     <div className="App">
       {/* <Navbar /> */}
+
       <Router >
         <Route exact path="/" >
         <Navbar registeration = {userIsRegistered}/>

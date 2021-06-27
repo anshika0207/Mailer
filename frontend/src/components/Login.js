@@ -7,6 +7,9 @@ import Navbar from "./Navbar";
 import MailOutlinedIcon from "@material-ui/icons/MailOutlined";
 import { Avatar, IconButton } from "@material-ui/core";
 import FacebookIcon from '@material-ui/icons/Facebook';
+import { useHistory } from "react-router-dom";
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LoginButton from '../LoginButton';
 
 var userIsRegistered=true;
 
@@ -16,17 +19,34 @@ function Login() {
     const [password, setpassword] = useState("")
     const [stateOfForm, setstateOfForm] = useState("");
 
-    const loginValidation = (e)=>{
+    const loginValidation =async (e)=>{
         e.preventDefault();
 
-         axios.post('/login', {
+        let res = await axios.post('/login', {
             username: username,
             password: password
-         });
+        });
+
+        let data = res.status;
+        alert(data);
+        if(data === 200){
+            routeChange();
+        }
+        else if(data === 404){
+            alert(data);
+        }
+        else{
+            alert(data);           
+        }
 
         setusername("");
         setpassword("");
-        setstateOfForm(true);
+    }
+    const history = useHistory();
+
+    const routeChange = () =>{ 
+      let path = `/`; 
+      history.push(path);
     }
     return (
 
@@ -44,20 +64,22 @@ function Login() {
                 <Button type="submit" className="btnReact">Login</Button>
                 <p className="forgotPass"> <Link>Forgot password?</Link>  </p>
                 <div>
+
+                <LoginButton/>
           <p>Login with</p>
           <IconButton>
-            <MailOutlinedIcon />
+            <MailOutlinedIcon className="mail_btn"/>
           </IconButton>
           <IconButton>
-          <FacebookIcon />
+          <FacebookIcon className="fb_btn"/>
+          </IconButton>
+          <IconButton>
+
+          <GitHubIcon className="github_btn" />
           </IconButton>
         </div>
             </form>
-            {stateOfForm && 
-        <Link to="/home">
-            home
-        </Link> 
-         }
+
         </div>
     )
 }
