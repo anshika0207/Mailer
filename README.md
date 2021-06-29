@@ -3,6 +3,8 @@
 This is a full stack web application which helps users take their business to next level. According to stats, automations can generate up to 6 times more orders than bulk email alone.
 We do the work of sending recurring emails to your clients for you, so that you can focus on things that actually matter!
 
+## Here is a website link 
+* http://girlgeekshack.herokuapp.com/
 ## Tech-Stack used
 ### Front-end
 * React
@@ -18,7 +20,8 @@ We do the work of sending recurring emails to your clients for you, so that you 
 
 ## Features
 1) Login and signup via:
-    - Username - password
+    - Username  
+    - password
 2) Customize your emails: 
     - Create/Edit the mail features.
     - Choose Subject and Mail Content.
@@ -42,11 +45,11 @@ We do the work of sending recurring emails to your clients for you, so that you 
 ## Installation
 * It is very easy to use our project if anyone wants. Just follow the steps :
 1) Install the following :
-    -Node.js
-    -MongoDB
-    -VS Code ( recommended , Any other suitable code editor will work )
-2) Clone this GitHub repository into your desktop.
-3) Open command line navigate to the project folder. Then type the following commands to install required dependencies :
+    - Node.js
+    - MongoDB
+    - VS code
+3) Clone this GitHub repository into your desktop.
+4) Open command line navigate to the project folder. Then type the following commands to install required dependencies :
 
      >  npm install async body-parser ejs express mongoose cors nodemailer bcryptjs jsonwebtoken node-cron validator dotenv web-push concurrently
  
