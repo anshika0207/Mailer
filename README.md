@@ -4,7 +4,7 @@ This is a full stack web application which helps users take their business to ne
 We do the work of sending recurring emails to your clients for you, so that you can focus on things that actually matter!
 
 ## Here is a website link 
-* http://girlgeekshack.herokuapp.com/
+* https://girlgeekshack.herokuapp.com/
 ## Tech-Stack used
 ### Front-end
 * React
